@@ -1,0 +1,87 @@
+<app-navigation></app-navigation>
+<div class="">
+    <div class="row d-flex justify-content-center">
+        <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title mb-4 mt-1">Punto de venta</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Operator data -->
+                            <div class="card">
+                                <article class="card-body">
+                                    <h4 class="card-title mb-4 mt-1">Información del cliente</h4>
+                                    <div ngbDropdown class="d-inline-block" style="width: 100%;">
+                                        <button class="btn btn-outline-primary" id="dropdownBasic1"
+                                            ngbDropdownToggle>{{selectedClient.name}}</button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                            <button *ngFor="let client of clients" ngbDropdownItem
+                                                (click)="selectClient(client)">{{client.name}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <table class="table table-borderless"
+                                        *ngIf="selectedClient.name != 'Seleccione un cliente'">
+                                        <tr>
+                                            <td style="font-weight: bold;">Cédula: </td>
+                                            <td>{{selectedClient.id}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Nombre: </td>
+                                            <td>{{selectedClient.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Apellidos: </td>
+                                            <td>{{selectedClient.lastname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Teléfono: </td>
+                                            <td>{{selectedClient.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Email: </td>
+                                            <td>{{selectedClient.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Estado: </td>
+                                            <td>{{selectedClient.state}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Código postal: </td>
+                                            <td>{{selectedClient.postcode}}</td>
+                                        </tr>
+                                    </table>
+                                </article>
+                            </div> <!-- card.// -->
+                            <br />
+                        </div>
+                        <!-- table -->
+                        <div class="col-md-8 table-responsive">
+                            <div class=table-wrapper>
+                                <table class="table bike-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Código</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Marca</th>
+                                            <th scope="col">Modelo</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div> <!-- card.// -->
+        </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+</div>
+<!--container end.//-->

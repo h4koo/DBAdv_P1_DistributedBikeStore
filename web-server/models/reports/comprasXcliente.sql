@@ -1,0 +1,1 @@
+SELECT clt.nombre, clt.apellido, avg(detord.precioVenta) FROM ventas.clientes clt JOIN ventas.ordenes ord ON clt.idCliente = ord.idCliente JOIN ventas.detalleOrden detord ON ord.idOrden = detord.idOrden WHERE ord.idTienda = ? AND ord.fechaOrden >= ? AND ord.fechaOrden < ? GROUP BY clt.idCliente; , [tienda_id, fecha_inicial, fecha_final]

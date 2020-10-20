@@ -1,0 +1,1 @@
+SELECT clt.nombre, clt.apellido, sum(detord.precioVenta) as Ventas FROM ventas.clientes clt JOIN ventas.ordenes ord on clt.idCliente = ord.idCliente JOIN ventas.detalleOrden detord ON ord.idOrden = detord.idOrden WHERE ord.fechaOrden >= ? AND ord.fechaOrden < ? GROUP BY clt.idCliente ORDER BY Ventas DESC LIMIT ?;  [fecha_inicial, fecha_final, numero_top=3]

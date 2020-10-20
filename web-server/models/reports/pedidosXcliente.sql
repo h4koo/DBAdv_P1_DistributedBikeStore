@@ -1,0 +1,1 @@
+SELECT clt.nombre, clt.apellido, ord.idOrden, ord.fechaOrden FROM ventas.clientes clt JOIN ventas.ordenes ord ON clt.idCliente = ord.idCliente WHERE ord.idTienda = ? AND ord.fechaOrden >= ? AND ord.fechaOrden < ? ORDER BY clt.apellido, clt.nombre; , [tienda_id, fecha_inicial, fecha_final]

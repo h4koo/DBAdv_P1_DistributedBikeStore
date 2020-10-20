@@ -2,14 +2,13 @@
 const sql = require("./db.js");
 
 
-const SimplePerson = function (id, name, lastname) {
-    this.id = id;
+const SimplePerson = function (name, lastname) {
     this.name = name;
     this.lastname = lastname;
 };
 
 SimplePerson.getClients = result => {
-    sql.query("SELECT * FROM clientes", (err, res) => {
+    sql.query("SELECT idCliente, nombre, apellido FROM clientes", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -22,7 +21,7 @@ SimplePerson.getClients = result => {
 
 
 SimplePerson.getEmployees = result => {
-    sql.query("SELECT * FROM empleados", (err, res) => {
+    sql.query("SELECT idEmpleado, nombre, apellido FROM empleados", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

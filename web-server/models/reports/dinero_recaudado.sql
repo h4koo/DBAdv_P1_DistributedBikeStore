@@ -1,0 +1,1 @@
+SELECT SUM(detord.precioVenta) AS TotalRecaudado FROM ventas.ordenes ord JOIN ventas.detalleOrden detord ON ord.idOrden = detord.idOrden WHERE ord.idTienda = ? AND ord.fechaOrden >= ? AND ord.fechaOrden < ?;, [tienda_id, fecha_inicial, fecha_final]

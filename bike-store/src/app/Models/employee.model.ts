@@ -1,6 +1,5 @@
-export class Client {
+export class Employee {
     id: number;
     name : string;
     lastname : string;
-    phone : number;
 }

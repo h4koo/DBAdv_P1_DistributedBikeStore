@@ -11,6 +11,17 @@ import { ProductCategoryReportComponent } from './Administration/product-categor
 import { ReportsComponent } from './Administration/reports/reports.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationComponent } from './Miscellaneoues/navigation/navigation.component';
+import { OnlyNumbersDirective } from './Miscellaneoues/only-numbers.directive';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import localeCR from '@angular/common/locales/es';
+registerLocaleData(localeCR);
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { Spanish } from 'flatpickr/dist/l10n/es';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -21,12 +32,19 @@ import { NavigationComponent } from './Miscellaneoues/navigation/navigation.comp
     PurchasesReportComponent,
     ProductCategoryReportComponent,
     ReportsComponent,
-    NavigationComponent
+    NavigationComponent,
+    OnlyNumbersDirective
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ToastrModule.forRoot(), // ToastrModule added
+    FlatpickrModule.forRoot({ locale: Spanish }),
+    CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

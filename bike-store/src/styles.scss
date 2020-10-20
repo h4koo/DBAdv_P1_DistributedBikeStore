@@ -3,17 +3,38 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 @import '~ngx-toastr/toastr';
+@import 'flatpickr/dist/flatpickr.css';
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 /* Color Theme Swatches in Hex */
-$Bikes-1-hex: #F0B725;
+/*$Bikes-1-hex: #F0B725;
 $Bikes-2-hex: #F77728;
 $Bikes-3-hex: #E03200;
 $Bikes-4-hex: #F74028;
-$Bikes-5-hex: #ED2642;
+$Bikes-5-hex: #ED2642;*/
+
+/* Color Theme Swatches in Hex */
+/*$Bikes-5-hex: #220B5E;
+$Bikes-2-hex: #7654B4;
+$Bikes-3-hex: #3B1D98;
+$Bikes-1-hex: #967ECB;
+$Bikes-4-hex: #513779;*/
+
+/* Color Theme Swatches in Hex */
+/*$Bikes-1-hex: #003F7D;
+$Bikes-2-hex: #FF8E00;
+$Bikes-3-hex: #E1E3E7;
+$Bikes-4-hex: #FF5003;
+$Bikes-5-hex: #002447;*/
+
+/* Color Theme Swatches in Hex */
+$Bikes-1-hex: #3C851B;
+$Bikes-2-hex: #7FC210;
+$Bikes-3-hex: #0E8F94;
+$Bikes-4-hex: #6FCCD6;
+$Bikes-5-hex: #175668;
+
+
 
 
 body {
@@ -32,8 +53,11 @@ body {
 
 .bike-table {
     thead {
-        
-        background-color: scale-color($Bikes-2-hex, $lightness: 20%);
+        background-color: scale-color($Bikes-4-hex, $lightness: 10%);
+        color           : white;
+    }
+    tfoot{
+        background-color: scale-color($Bikes-4-hex, $lightness: 30%);
         color           : white;
     }
 }
@@ -82,4 +106,14 @@ body {
 
 .btn-primary {
     background-color: $Bikes-2-hex !important;
+    border-color: transparent;
+    &:hover {
+        background-color: scale-color($Bikes-2-hex, $lightness: -15%) !important;
+        color           : white;
+        border-color: transparent;
+    }
 }
+.btn-icon{
+    background-color: transparent;
+    border: transparent;
+  }

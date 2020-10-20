@@ -7,17 +7,110 @@
                     <h4 class="card-title mb-4 mt-1">Punto de venta</h4>
                     <hr>
                     <div class="row">
+                        <!-- table -->
+                        <div class="col-md-8 table-responsive">
+                            <div class="card" style="margin-bottom: 10px;">
+                                <article class="card-body">
+                                    <div class="form">
+                                        <form #form autocomplete="off">
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <label>Agregar línea: </label>
+                                                </div>
+                                                <div class="col">
+                                                    <div ngbDropdown class="d-inline-block">
+                                                        <button class="btn btn-outline-primary" id="dropdownProduct"
+                                                            ngbDropdownToggle>{{selectedProduct.name}}</button>
+                                                        <div ngbDropdownMenu aria-labelledby="dropdownProduct">
+                                                            <button *ngFor="let product of products" ngbDropdownItem
+                                                                (click)="selectProduct(product)">{{product.name}}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <input name="quantity" class="form-control" placeholder="Cantidad"
+                                                        [(ngModel)]="newLine.quantity" appOnlyNumbers required>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary btn-block"
+                                                        (click)="addProduct()">Agregar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class=table-wrapper>
+                                <table class="table table-hover bike-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let line of tableLines">
+                                            <td>{{line.id}}</td>
+                                            <td>{{line.name}}</td>
+                                            <td>{{line.price}}</td>
+                                            <td>{{line.quantity}}</td>
+                                            <td>
+                                                <button class="btn-icon" (click)="removeProduct(line)">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td>Total: </td>
+                                            <td>{{total}}</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
                         <div class="col-md-4">
-                            <!-- Operator data -->
+                            <!-- Employee data -->
+                            <div class="card">
+                                <article class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4>Vendedor</h4>
+                                        </div>
+                                        <div class="col">
+                                            <div ngbDropdown class="d-inline-block" style="width: 100%;">
+                                                <button class="btn btn-outline-primary" id="dropdownBasic3"
+                                                    ngbDropdownToggle>{{selectedEmployee.name}}
+                                                    {{selectedEmployee.lastname}}</button>
+                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+                                                    <button *ngFor="let employee of employees" ngbDropdownItem
+                                                        (click)="selectEmployee(employee)">{{employee.name}}
+                                                        {{employee.lastname}}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div> <!-- card.// -->
+                            <br />
+                            <!-- Client data -->
                             <div class="card">
                                 <article class="card-body">
                                     <h4 class="card-title mb-4 mt-1">Información del cliente</h4>
                                     <div ngbDropdown class="d-inline-block" style="width: 100%;">
                                         <button class="btn btn-outline-primary" id="dropdownBasic1"
-                                            ngbDropdownToggle>{{selectedClient.name}}</button>
+                                            ngbDropdownToggle>{{selectedClient.name}}
+                                            {{selectedClient.lastname}}</button>
                                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                             <button *ngFor="let client of clients" ngbDropdownItem
-                                                (click)="selectClient(client)">{{client.name}}
+                                                (click)="selectClient(client)">{{client.name}} {{client.lastname}}
                                             </button>
                                         </div>
                                     </div>
@@ -39,44 +132,38 @@
                                             <td style="font-weight: bold;">Teléfono: </td>
                                             <td>{{selectedClient.phone}}</td>
                                         </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Email: </td>
-                                            <td>{{selectedClient.email}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Estado: </td>
-                                            <td>{{selectedClient.state}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Código postal: </td>
-                                            <td>{{selectedClient.postcode}}</td>
-                                        </tr>
                                     </table>
                                 </article>
                             </div> <!-- card.// -->
                             <br />
-                        </div>
-                        <!-- table -->
-                        <div class="col-md-8 table-responsive">
-                            <div class=table-wrapper>
-                                <table class="table bike-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Código</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Marca</th>
-                                            <th scope="col">Modelo</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <!-- Fecha data -->
+                            <div class="card">
+                                <article class="card-body">
+                                    <form #Form autocomplete="off">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Fecha límite: </h4>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control" type="text" mwlFlatpickr
+                                                    [(ngModel)]="newOrder.required_date" (ngModelChange)="refresh.next()"
+                                                    [altInput]="true" [convertModelValue]="true" [enableTime]="false"
+                                                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                                    [ngModelOptions]="{standalone: true}" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </article>
+                            </div> <!-- card.// -->
+                            <br />
+                            <!-- Procesar compra -->
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" (click)="processOrder()">Procesar
+                                        orden</button>
+                                </div>
                             </div>
+                            <br />
                         </div>
                     </div>
                 </article>

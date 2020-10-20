@@ -23,6 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "angularx-flatpickr": "^6.5.1",
     "bootstrap": "^4.4.0",
+    "date-fns": "^2.16.1",
     "flatpickr": "^4.6.6",
     "ngx-toastr": "^13.1.0",
     "rxjs": "~6.5.4",

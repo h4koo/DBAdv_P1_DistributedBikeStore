@@ -125,7 +125,8 @@ body {
 /* this is for clicked or active tabs */
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-    background-color: white;
+    background-color: scale-color($Bikes-4-hex, $lightness: -5%);
+
     color           : $Bikes-3-hex;
     font-size       : 15px;
     font-weight     : bold;
@@ -133,9 +134,14 @@ body {
 
 /* this is for normal tabs */
 .nav-tabs .nav-link {
+    //background-color: white;
     background-color: scale-color($Bikes-4-hex, $lightness: 45%);
     color           : $Bikes-3-hex;
     font-size       : 15px;
     font-weight     : bold;
     padding         : 5px 25px;
+}
+
+.tab-content .active{
+    min-height: 450px; 
 }

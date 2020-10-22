@@ -62,7 +62,7 @@ export class SalePointComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  constructor( public toastr: ToastrService, private salesService: SalesService) { }
+  constructor( private toastr: ToastrService, private salesService: SalesService) { }
 
   ngOnInit(): void {
     this.clients = this.salesService.getClients();

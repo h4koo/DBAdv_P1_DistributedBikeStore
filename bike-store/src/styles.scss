@@ -56,7 +56,8 @@ body {
         background-color: scale-color($Bikes-4-hex, $lightness: 10%);
         color           : white;
     }
-    tfoot{
+
+    tfoot {
         background-color: scale-color($Bikes-4-hex, $lightness: 30%);
         color           : white;
     }
@@ -83,11 +84,12 @@ body {
 .dropdown-toggle {
     background-color: white;
     color           : $Bikes-2-hex;
-    
-    &:visited{
+
+    &:visited {
         background-color: $Bikes-2-hex !important;
         color           : white;
     }
+
     &:hover {
         background-color: $Bikes-2-hex !important;
         color           : white;
@@ -106,14 +108,34 @@ body {
 
 .btn-primary {
     background-color: $Bikes-2-hex !important;
-    border-color: transparent;
+    border-color    : transparent;
+
     &:hover {
         background-color: scale-color($Bikes-2-hex, $lightness: -15%) !important;
         color           : white;
-        border-color: transparent;
+        border-color    : transparent;
     }
 }
-.btn-icon{
+
+.btn-icon {
     background-color: transparent;
-    border: transparent;
-  }
+    border          : transparent;
+}
+
+/* this is for clicked or active tabs */
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background-color: white;
+    color           : $Bikes-3-hex;
+    font-size       : 15px;
+    font-weight     : bold;
+}
+
+/* this is for normal tabs */
+.nav-tabs .nav-link {
+    background-color: scale-color($Bikes-4-hex, $lightness: 45%);
+    color           : $Bikes-3-hex;
+    font-size       : 15px;
+    font-weight     : bold;
+    padding         : 5px 25px;
+}

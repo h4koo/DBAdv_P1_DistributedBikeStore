@@ -1,1 +1,73 @@
-<p>sales-report works!</p>
+<article class="card-body" style="min-height: 450px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <form #form autocomplete="off">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-lg-1" style="text-align: center;">
+                            <label>Periodo: </label>
+                        </div>
+                        <div class="col-lg-1" style="text-align: center;">
+                            <label>Inicio: </label>
+                        </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="startDate"
+                                (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                                [enableTime]="false" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                [ngModelOptions]="{standalone: true}" />
+                        </div>
+                        <div class="col-lg-1" style="text-align: center;">
+                            <label>Fin: </label>
+                        </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="endDate"
+                                (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                                [enableTime]="false" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                [ngModelOptions]="{standalone: true}" />
+                        </div>
+                        <div class="col-lg-1" style="text-align: center;">
+                            Tienda: 
+                        </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <div ngbDropdown class="d-inline-block" style="width: 100%;">
+                                <button class="btn btn-outline-primary" id="dropdownBasic1"
+                                    ngbDropdownToggle>{{selectedStore}}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button *ngFor="let store of stores" ngbDropdownItem
+                                        (click)="selectStore(store)">{{store}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button class="btn btn-primary btn-block" (click)="getReport()">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <div class=table-wrapper>
+                    <table class="table table-hover bike-table">
+                        <thead>
+                            <tr class="d-flex">
+                                <th class="col-12" style="text-align: center;">Monto de ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="d-flex" *ngFor="let line of report">
+                                <td style="text-align: center;" class="col-12">{{line.sales}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg 3"></div>
+    </div>
+</article>

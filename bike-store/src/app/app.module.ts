@@ -20,8 +20,8 @@ registerLocaleData(localeCR);
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { Spanish } from 'flatpickr/dist/l10n/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { IncomeReportComponent } from './Administration/income-report/income-report.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductCategoryReportComponent,
     ReportsComponent,
     NavigationComponent,
-    OnlyNumbersDirective
+    OnlyNumbersDirective,
+    IncomeReportComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(), // ToastrModule added
     FlatpickrModule.forRoot({ locale: Spanish }),
     CommonModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

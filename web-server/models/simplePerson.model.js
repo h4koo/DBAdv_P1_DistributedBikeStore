@@ -31,3 +31,5 @@ SimplePerson.getEmployees = result => {
         result(null, res);
     });
 };
+
+module.exports = SimplePerson;

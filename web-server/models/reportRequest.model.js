@@ -6,7 +6,7 @@ const ReportRequest = function (report_id, client_id, prod_id, prod_category, in
 
 };
 
-ReportRequest.getReports = () => {
+ReportRequest.getReports = function () {
     return [{
         // CA & TX
         report_id: 1,
@@ -70,3 +70,5 @@ ReportRequest.submitReport = () => {
     }
 
 };
+
+module.exports = ReportRequest;

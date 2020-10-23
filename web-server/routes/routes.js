@@ -9,25 +9,25 @@ module.exports = app => {
     app.get("/api/clients", general.getClients);
 
     // Retrieve all Employees
-    app.get("/api/empleados", general.getEmployees);
+    app.get("/api/employees", general.getEmployees);
 
     // Retrieve all Products
-    app.get("/api/productos", general.getProducts);
+    app.get("/api/products", general.getProducts);
 
     // Retrieve all ProductCategories
-    app.get("/api/clients", general.getProductCategories);
+    app.get("/api/productcategories", general.getProductCategories);
 
 
     //---- Reportes ------
     // Retrieve all Reports
-    app.get("/api/reportes", reports.getReports);
+    app.get("/api/reports", reports.getReports);
 
     // Run specified Report and retireve results
-    app.put("/api/reportes/:reportId", reports.getReportResult);
+    app.put("/api/reports/:reportId", reports.getReportResult);
 
 
     //---- Venta ------
     // Create a new sale in the system
-    app.post("/api/venta", sale.createOrder);
+    app.post("/api/sale", sale.createOrder);
 
 };

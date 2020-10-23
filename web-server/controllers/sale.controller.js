@@ -8,7 +8,7 @@ exports.createOrder = (req, res) => {
 
     let idCliente = req.body.client_id;
     let idEmp = req.body.emp_id;
-    let fecha_entrega = re.body.req_date;
+    let fecha_entrega = req.body.req_date;
 
     let numItems = 0;
     let products = '';

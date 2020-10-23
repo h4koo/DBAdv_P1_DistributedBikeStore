@@ -11,12 +11,13 @@ exports.getReportResult = (req, res) => {
     // cambiar idTienda dependiendo del server ######################################################################
     let idTienda = 1;
 
-    let reportId = req.params.tagId;
+    let reportId = parseInt(req.params.reportId);
     let idCliente = req.body.client_id;
     let prodCategory = req.body.prod_category;
     let startDate = req.body.init_date;
     let endDate = req.body.end_date;
 
+    console.log('reportid: ' + reportId + '  idCliente: ' + idCliente + '  categoaria: ' + prodCategory + '  startdate: ' + startDate + ' enddate: ' + endDate)
     ReportRequest.submitReport(reportId, idTienda, idCliente, prodCategory, startDate, endDate, 3, (err, data) => {
         if (err)
             res.status(500).send({

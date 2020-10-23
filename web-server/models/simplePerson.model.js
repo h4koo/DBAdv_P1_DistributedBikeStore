@@ -8,7 +8,7 @@ const SimplePerson = function (name, lastname) {
 };
 
 SimplePerson.getClients = result => {
-    sql.query("SELECT idCliente AS person_id, nombre, apellido FROM clientes", (err, res) => {
+    sql.query("SELECT idCliente AS person_id, nombre, apellido FROM ventas.clientes", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -21,7 +21,7 @@ SimplePerson.getClients = result => {
 
 
 SimplePerson.getEmployees = result => {
-    sql.query("SELECT idEmpleado as person_id, nombre, apellido FROM empleados", (err, res) => {
+    sql.query("SELECT idEmpleado as person_id, nombre, apellido FROM ventas.empleados", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

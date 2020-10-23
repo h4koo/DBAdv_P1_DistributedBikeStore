@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationComponent } from './Miscellaneoues/navigation/navigation.component';
 import { OnlyNumbersDirective } from './Miscellaneoues/only-numbers.directive';
 import { FormsModule } from '@angular/forms';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import localeCR from '@angular/common/locales/es';
 registerLocaleData(localeCR);
@@ -47,7 +47,7 @@ import { IncomeReportComponent } from './Administration/income-report/income-rep
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

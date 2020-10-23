@@ -40,7 +40,7 @@ export class SalePointComponent implements OnInit {
     client_id: 0,
     emp_id: 0,
     items: [],
-    required_date : addDays(new Date(), 15)
+    required_date: addDays(new Date(), 15)
   };
 
   newLine: OrderLine = {
@@ -62,7 +62,7 @@ export class SalePointComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  constructor( private toastr: ToastrService, private salesService: SalesService) { }
+  constructor(private toastr: ToastrService, private salesService: SalesService) { }
 
   ngOnInit(): void {
     this.clients = this.salesService.getClients();
@@ -85,24 +85,34 @@ export class SalePointComponent implements OnInit {
   }
 
   addProduct() {
-    this.newLine.product_id = this.selectedProduct.id;
-    this.orderLines.push(this.newLine);
-    var line = {
-      id: this.selectedProduct.id,
-      name: this.selectedProduct.name,
-      quantity: this.newLine.quantity,
-      price: this.selectedProduct.price
+    if (this.selectedProduct.name != "Seleccione un producto") {
+      if (this.newLine.quantity != 0) {
+        this.newLine.product_id = this.selectedProduct.id;
+        this.orderLines.push(this.newLine);
+        var line = {
+          id: this.selectedProduct.id,
+          name: this.selectedProduct.name,
+          quantity: this.newLine.quantity,
+          price: this.selectedProduct.price
+        }
+        this.tableLines.push(line);
+        this.total = this.total + (this.selectedProduct.price * this.newLine.quantity);
+        this.newLine = {
+          product_id: 0,
+          quantity: 0
+        }
+        this.selectedProduct = {
+          name: "Seleccione un producto",
+          id: 0,
+          price: 0
+        }
+      }
+      else {
+        this.toastr.error("Escoja una cantidad", "Error");
+      }
     }
-    this.tableLines.push(line);
-    this.total = this.total + (this.selectedProduct.price * this.newLine.quantity);
-    this.newLine = {
-      product_id: 0,
-      quantity: 0
-    }
-    this.selectedProduct = {
-      name: "Seleccione un producto",
-      id: 0,
-      price: 0
+    else {
+      this.toastr.error("Seleccione un producto", "Error")
     }
   }
 
@@ -117,21 +127,21 @@ export class SalePointComponent implements OnInit {
   }
 
   processOrder() {
-    if(this.selectedEmployee.name != "Seleccione un empleado"){
-      if(this.selectedClient.name != "Seleccione un cliente"){
-        if(this.orderLines.length != 0){
-        this.newOrder.items = this.orderLines;
-        this.salesService.processOrder(this.newOrder);
+    if (this.selectedEmployee.name != "Seleccione un empleado") {
+      if (this.selectedClient.name != "Seleccione un cliente") {
+        if (this.orderLines.length != 0) {
+          this.newOrder.items = this.orderLines;
+          this.salesService.processOrder(this.newOrder);
         }
-        else{
+        else {
           this.toastr.error("Agregue productos a la orden", "Error")
         }
       }
-      else{
+      else {
         this.toastr.error("Seleccione un cliente", "Error");
       }
     }
-    else{
+    else {
       this.toastr.error("Seleccione un empleado", "Error");
     }
   }

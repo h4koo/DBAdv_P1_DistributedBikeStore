@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 
@@ -9,9 +10,12 @@ app.use(bodyParser.json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(process.cwd()+'/bike-store/dist/bike-store'))
+
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to DistributedBikes application." });
+    //res.json({ message: "Welcome to DistributedBikes application." });
+    res.sendFile(process.cwd()+'/bike-store/dist/bike-store/index.html');
 });
 
 require("./routes/routes.js")(app);

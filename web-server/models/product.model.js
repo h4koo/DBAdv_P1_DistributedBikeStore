@@ -8,7 +8,7 @@ const Product = function (name, price) {
 };
 
 Product.getProducts = result => {
-    sql.query("SELECT idProducto, nomProducto, precioVenta FROM productos;", (err, res) => {
+    sql.query("SELECT idProducto AS prod_id, nomProducto AS nombre, precioVenta AS precio FROM productos;", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -20,7 +20,7 @@ Product.getProducts = result => {
 };
 
 Product.getCategories = result => {
-    sql.query("SELECT * FROM categorias;", (err, res) => {
+    sql.query("SELECT idCategoria AS  report_id, descripcion AS nombre FROM categorias;", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

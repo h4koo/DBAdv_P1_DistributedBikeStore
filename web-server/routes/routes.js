@@ -23,7 +23,7 @@ module.exports = app => {
     app.get("/api/reportes", reports.getReports);
 
     // Run specified Report and retireve results
-    app.get("/api/reportes/:reportId", reports.getReportResult);
+    app.put("/api/reportes/:reportId", reports.getReportResult);
 
 
     //---- Venta ------

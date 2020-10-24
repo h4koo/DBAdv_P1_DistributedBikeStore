@@ -1,3 +1,3 @@
 export class IncomeReportLine {
-    total : number;
+    TotalRecaudado : number;
 }

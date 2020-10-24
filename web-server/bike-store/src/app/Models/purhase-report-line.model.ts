@@ -1,4 +1,5 @@
 export class PurhaseReportLine {
-    client : string;
-    purchases : number;
+    nombre : string;
+    apellido : string;
+    promedioCompras : number;
 }

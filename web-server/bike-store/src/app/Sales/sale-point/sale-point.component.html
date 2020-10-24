@@ -1,161 +1,163 @@
 <app-navigation></app-navigation>
-<div class="">
-    <div class="row d-flex justify-content-center">
-        <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
-            <div class="card">
-                <article class="card-body">
-                    <h4 class="card-title mb-4 mt-1">Punto de venta</h4>
-                    <hr>
-                    <div class="row">
-                        <!-- table -->
-                        <div class="col-md-8 table-responsive">
-                            <div class="card" style="margin-bottom: 10px;">
-                                <article class="card-body">
-                                    <div class="form">
-                                        <form #form autocomplete="off">
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <label>Agregar línea: </label>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="ng-autocomplete">
-                                                        <ng-autocomplete [data]="products" [searchKeyword]="keyword"
-                                                            (selected)='selectProduct($event)' [itemTemplate]="itemTemplate"
-                                                            [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un producto">
-                                                        </ng-autocomplete>
-                                                        <ng-template #itemTemplate let-item>
-                                                            <a [innerHTML]="item.name"></a>
-                                                        </ng-template>
-                                                        <ng-template #notFoundTemplate let-notFound>
-                                                            <div [innerHTML]="notFound"></div>
-                                                        </ng-template>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <input name="quantity" class="form-control" placeholder="Cantidad"
-                                                        [(ngModel)]="newLine.cant" appOnlyNumbers required>
-                                                </div>
-                                                <div class="col">
-                                                    <button class="btn btn-primary btn-block"
-                                                        (click)="addProduct()">Agregar</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class=table-wrapper>
-                                <table class="table table-hover bike-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nombre</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let line of tableLines">
-                                            <td>{{line.id}}</td>
-                                            <td>{{line.name}}</td>
-                                            <td>{{line.price}}</td>
-                                            <td>{{line.quantity}}</td>
-                                            <td>
-                                                <button class="btn-icon" (click)="removeProduct(line)">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td>Total: </td>
-                                            <td>{{total}}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <!-- Employee data -->
-                            <div class="card">
-                                <article class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h4>Vendedor</h4>
-                                        </div>
-                                        <div class="col">
-                                            <div class="ng-autocomplete">
-                                                <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
-                                                    (selected)='selectEmployee($event)' [itemTemplate]="itemTemplate"
-                                                    [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un empleado">
-                                                </ng-autocomplete>
-                                                <ng-template #itemTemplate let-item>
-                                                    <a [innerHTML]="item.name"></a>
-                                                </ng-template>
-                                                <ng-template #notFoundTemplate let-notFound>
-                                                    <div [innerHTML]="notFound"></div>
-                                                </ng-template>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div> <!-- card.// -->
-                            <br />
-                            <!-- Client data -->
-                            <div class="card">
-                                <article class="card-body">
-                                    <h4 class="card-title mb-4 mt-1">Información del cliente</h4>
-                                    <div class="ng-autocomplete">
-                                        <ng-autocomplete [data]="clients" [searchKeyword]="keyword"
-                                            (selected)='selectClient($event)' [itemTemplate]="itemTemplate"
-                                            [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un cliente">
-                                        </ng-autocomplete>
-                                        <ng-template #itemTemplate let-item>
-                                            <a [innerHTML]="item.name"></a>
-                                        </ng-template>
-                                        <ng-template #notFoundTemplate let-notFound>
-                                            <div [innerHTML]="notFound"></div>
-                                        </ng-template>
-                                    </div>
-                                </article>
-                            </div> <!-- card.// -->
-                            <br />
-                            <!-- Fecha data -->
-                            <div class="card">
-                                <article class="card-body">
-                                    <form #Form autocomplete="off">
-                                        <div class="row">
+
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Punto de venta</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                    <div class="col-md-8 table-responsive">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <article class="card-body">
+                                <div class="form">
+                                    <form #form autocomplete="off">
+                                        <div class="form-row">
                                             <div class="col">
-                                                <h4>Fecha límite: </h4>
+                                                <label>Agregar línea: </label>
                                             </div>
                                             <div class="col">
-                                                <input class="form-control" type="text" mwlFlatpickr
-                                                    [(ngModel)]="newOrder.required_date" (ngModelChange)="refresh.next()"
-                                                    [altInput]="true" [convertModelValue]="true" [enableTime]="false"
-                                                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
-                                                    [ngModelOptions]="{standalone: true}" />
+                                                <div class="ng-autocomplete">
+                                                    <ng-autocomplete [data]="products" [searchKeyword]="keyword"
+                                                        (selected)='selectProduct($event)' [itemTemplate]="itemTemplate"
+                                                        [notFoundTemplate]="notFoundTemplate"
+                                                        placeHolder="Seleccione un producto">
+                                                    </ng-autocomplete>
+                                                    <ng-template #itemTemplate let-item>
+                                                        <a [innerHTML]="item.name"></a>
+                                                    </ng-template>
+                                                    <ng-template #notFoundTemplate let-notFound>
+                                                        <div [innerHTML]="notFound"></div>
+                                                    </ng-template>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <input name="quantity" class="form-control" placeholder="Cantidad"
+                                                    [(ngModel)]="newLine.cant" appOnlyNumbers required>
+                                            </div>
+                                            <div class="col">
+                                                <button class="btn btn-primary btn-block"
+                                                    (click)="addProduct()">Agregar</button>
                                             </div>
                                         </div>
                                     </form>
-                                </article>
-                            </div> <!-- card.// -->
-                            <br />
-                            <!-- Procesar compra -->
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-primary btn-block" (click)="processOrder()">Procesar
-                                        orden</button>
                                 </div>
-                            </div>
-                            <br />
+                            </article>
+                        </div>
+                        <div class=table-wrapper>
+                            <table class="table table-hover bike-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let line of tableLines">
+                                        <td>{{line.id}}</td>
+                                        <td>{{line.name}}</td>
+                                        <td>{{line.price}}</td>
+                                        <td>{{line.quantity}}</td>
+                                        <td>
+                                            <button class="btn-icon" (click)="removeProduct(line)">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td>Total: </td>
+                                        <td>{{total}}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
-                </article>
-            </div> <!-- card.// -->
-        </aside> <!-- col.// -->
-    </div> <!-- row.// -->
-</div>
+                    <div class="col-md-4">
+                        <!-- Employee data -->
+                        <div class="card">
+                            <article class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Vendedor</h4>
+                                    </div>
+                                    <div class="col">
+                                        <div class="ng-autocomplete">
+                                            <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                                                (selected)='selectEmployee($event)' [itemTemplate]="itemTemplate"
+                                                [notFoundTemplate]="notFoundTemplate"
+                                                placeHolder="Seleccione un empleado">
+                                            </ng-autocomplete>
+                                            <ng-template #itemTemplate let-item>
+                                                <a [innerHTML]="item.name"></a>
+                                            </ng-template>
+                                            <ng-template #notFoundTemplate let-notFound>
+                                                <div [innerHTML]="notFound"></div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div> <!-- card.// -->
+                        <br />
+                        <!-- Client data -->
+                        <div class="card">
+                            <article class="card-body">
+                                <h4 class="card-title mb-4 mt-1">Información del cliente</h4>
+                                <div class="ng-autocomplete">
+                                    <ng-autocomplete [data]="clients" [searchKeyword]="keyword"
+                                        (selected)='selectClient($event)' [itemTemplate]="itemTemplate"
+                                        [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un cliente">
+                                    </ng-autocomplete>
+                                    <ng-template #itemTemplate let-item>
+                                        <a [innerHTML]="item.name"></a>
+                                    </ng-template>
+                                    <ng-template #notFoundTemplate let-notFound>
+                                        <div [innerHTML]="notFound"></div>
+                                    </ng-template>
+                                </div>
+                            </article>
+                        </div> <!-- card.// -->
+                        <br />
+                        <!-- Fecha data -->
+                        <div class="card">
+                            <article class="card-body">
+                                <form #Form autocomplete="off">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4>Fecha límite: </h4>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control" type="text" mwlFlatpickr
+                                                [(ngModel)]="newOrder.required_date" (ngModelChange)="refresh.next()"
+                                                [altInput]="true" [convertModelValue]="true" [enableTime]="false"
+                                                dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                                [ngModelOptions]="{standalone: true}" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </article>
+                        </div> <!-- card.// -->
+                        <br />
+                        <!-- Procesar compra -->
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary btn-block" (click)="processOrder()">Procesar
+                                    orden</button>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
 <!--container end.//-->

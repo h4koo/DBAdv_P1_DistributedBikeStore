@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { compareAsc } from 'date-fns';
+import { compareAsc, format, parseISO } from 'date-fns';
 import { ToastrService } from 'ngx-toastr';
+import { report } from 'process';
 import { Subject } from 'rxjs';
 import { OrderReportLine } from 'src/app/Models/order-report-line.model';
 import { ReportsService } from 'src/app/Services/reports.service';
@@ -27,10 +28,14 @@ export class OrdersReportComponent implements OnInit {
 
   getReport(){
     if (compareAsc(this.startDate, this.endDate) == -1 || compareAsc(this.startDate, this.endDate) == 0) {
-      this.report = this.reportService.getOrdersReport(this.startDate, this.endDate, "Rowlette");
+      this.reportService.getOrdersReport(this.startDate, this.endDate).then(res => this.report = res);
     }
     else{
       this.toastr.error("La fecha de fin no puede ser menor a inicio")
     }
+  }
+  
+  getDate(date : string){
+    return format(parseISO(date), 'dd/MMM/yyyy')
   }
 }

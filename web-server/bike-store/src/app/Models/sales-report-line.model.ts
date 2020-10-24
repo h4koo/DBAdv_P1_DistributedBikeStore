@@ -1,3 +1,5 @@
 export class SalesReportLine {
-    sales : number;
+    nomTienda: string;
+    estado: string;
+    Ventas: number;
 }

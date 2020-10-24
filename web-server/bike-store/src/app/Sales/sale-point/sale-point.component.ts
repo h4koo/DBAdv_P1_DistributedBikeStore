@@ -74,10 +74,8 @@ export class SalePointComponent implements OnInit {
     this.newOrder.client_id = value.id;
   }*/
   selectClient(item) {
-    this.newOrder.client_id = item.id;
+    this.newOrder.client_id = item.person_id;
     this.selectedClient = item;
-    console.log(this.selectedClient.name);
-    console.log(this.selectedEmployee.name);
   }
 
 

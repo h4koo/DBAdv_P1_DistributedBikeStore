@@ -33,7 +33,7 @@
             </form>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
@@ -42,14 +42,16 @@
                     <table class="table table-hover bike-table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-6">Tienda</th>
-                                <th class="col-6">Monto de ventas</th>
+                                <th class="col-4">Tienda</th>
+                                <th class="col-4">Producto</th>
+                                <th class="col-4">Monto de ventas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="d-flex" *ngFor="let line of report">
-                                <td class="col-6">{{line.nomTienda}}</td>
-                                <td class="col-6">$ {{line.Ventas}}</td>
+                                <td class="col-4">{{line.Tienda}}</td>
+                                <td class="col-4">{{line.NombreProducto}}</td>
+                                <td class="col-4">$ {{line.Ventas}}</td>
                             </tr>
                         </tbody>
                     </table>

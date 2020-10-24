@@ -55,11 +55,17 @@ body {
     thead {
         background-color: scale-color($Bikes-4-hex, $lightness: 10%);
         color           : white;
+        text-align: center;
+    }
+
+    tbody{
+        text-align: center;
     }
 
     tfoot {
         background-color: scale-color($Bikes-4-hex, $lightness: 30%);
         color           : white;
+        text-align: center;
     }
 }
 
@@ -126,7 +132,6 @@ body {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
     background-color: scale-color($Bikes-4-hex, $lightness: -5%);
-
     color      : $Bikes-3-hex;
     font-size  : 15px;
     font-weight: bold;
@@ -139,11 +144,6 @@ body {
     color           : $Bikes-3-hex;
     font-size       : 15px;
     font-weight     : bold;
-    padding         : 5px 25px;
-}
-
-.tab-content .active {
-    min-height: 450px;
 }
 
 .ng-autocomplete {
@@ -151,5 +151,4 @@ body {
     max-width: 300px;
     display  : table;
     margin   : 0 auto;
-
 }

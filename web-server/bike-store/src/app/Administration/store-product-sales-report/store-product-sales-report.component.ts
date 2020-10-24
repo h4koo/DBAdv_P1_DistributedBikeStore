@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { compareAsc } from 'date-fns';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { SalesReportLine } from 'src/app/Models/sales-report-line.model';
+import { StoreProductsReportLine } from 'src/app/Models/store-products-report-line.model';
 import { ReportsService } from 'src/app/Services/reports.service';
 
 @Component({
-  selector: 'app-sales-report',
-  templateUrl: './sales-report.component.html',
-  styleUrls: ['./sales-report.component.scss']
+  selector: 'app-store-product-sales-report',
+  templateUrl: './store-product-sales-report.component.html',
+  styleUrls: ['./store-product-sales-report.component.scss']
 })
-export class SalesReportComponent implements OnInit {
+export class StoreProductSalesReportComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
@@ -18,7 +18,7 @@ export class SalesReportComponent implements OnInit {
 
   endDate: Date = new Date();
 
-  report: SalesReportLine[] = [];
+  report: StoreProductsReportLine[] = [];
 
   constructor(private toastr: ToastrService, private reportService: ReportsService) { }
 
@@ -27,7 +27,7 @@ export class SalesReportComponent implements OnInit {
 
   getReport() {
     if (compareAsc(this.startDate, this.endDate) == -1 || compareAsc(this.startDate, this.endDate) == 0) {
-        this.reportService.getSalesReport(this.startDate, this.endDate).then(res => this.report = res);
+      this.reportService.getStoreProductSalesReport(this.startDate, this.endDate).then(res => this.report = res);
     }
     else {
       this.toastr.error("La fecha de fin no puede ser menor a inicio")

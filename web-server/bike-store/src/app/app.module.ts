@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { IncomeReportComponent } from './Administration/income-report/income-report.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { StoreProductSalesReportComponent } from './Administration/store-product-sales-report/store-product-sales-report.component';
+import { TopClientsReportComponent } from './Administration/top-clients-report/top-clients-report.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ReportsComponent,
     NavigationComponent,
     OnlyNumbersDirective,
-    IncomeReportComponent
+    IncomeReportComponent,
+    StoreProductSalesReportComponent,
+    TopClientsReportComponent
   ],
   imports: [
     BrowserModule,

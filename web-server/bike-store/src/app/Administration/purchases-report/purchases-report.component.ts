@@ -28,7 +28,7 @@ export class PurchasesReportComponent implements OnInit {
 
   getReport(){
     if (compareAsc(this.startDate, this.endDate) == -1 || compareAsc(this.startDate, this.endDate) == 0) {
-      this.report = this.reportService.getPurchasesReport(this.startDate, this.endDate, "Rowlette");
+      this.reportService.getPurchasesReport(this.startDate, this.endDate).then(res => this.report = res);
     }
     else{
       this.toastr.error("La fecha de fin no puede ser menor a inicio")

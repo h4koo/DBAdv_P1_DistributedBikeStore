@@ -42,14 +42,16 @@
                     <table class="table table-hover bike-table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-6">Tienda</th>
-                                <th class="col-6">Monto de ventas</th>
+                                <th class="col-4">Nombre</th>
+                                <th class="col-4">Apellido</th>
+                                <th class="col-4">Monto de compras</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="d-flex" *ngFor="let line of report">
-                                <td class="col-6">{{line.nomTienda}}</td>
-                                <td class="col-6">$ {{line.Ventas}}</td>
+                                <td class="col-4">{{line.nombre}}</td>
+                                <td class="col-4">{{line.apellido}}</td>
+                                <td class="col-4">$ {{line.Ventas}}</td>
                             </tr>
                         </tbody>
                     </table>

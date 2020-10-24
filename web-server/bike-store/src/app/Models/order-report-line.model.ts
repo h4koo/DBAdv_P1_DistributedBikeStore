@@ -1,4 +1,6 @@
 export class OrderReportLine {
-    client : string;
-    orders : number;
+    nombre : string;
+    apellido : string;
+    idOrden : number;
+    fechaOrden : Date;
 }

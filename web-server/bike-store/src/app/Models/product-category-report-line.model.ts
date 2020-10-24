@@ -1,4 +1,5 @@
 export class ProductCategoryReportLine {
-    product : string;
-    sales : number;
+    Categoria : string;
+    NombreProducto : string;
+    Total : number;
 }

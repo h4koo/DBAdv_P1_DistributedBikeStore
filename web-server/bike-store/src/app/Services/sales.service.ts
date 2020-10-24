@@ -103,7 +103,7 @@ export class SalesService {
       console.log(res);
       if (res[0][0].Result == "success") {
         this.toastr.success('Orden procesada exitosamente', 'Éxito');
-      }else{
+      } else{
         this.toastr.error(res[0][0].Result, 'Error');
       }
     }, error => {

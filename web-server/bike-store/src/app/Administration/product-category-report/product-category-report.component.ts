@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { compareAsc } from 'date-fns';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { Category } from 'src/app/Models/category.model';
 import { ProductCategoryReportLine } from 'src/app/Models/product-category-report-line.model';
 import { ReportsService } from 'src/app/Services/reports.service';
 
@@ -13,42 +15,42 @@ export class ProductCategoryReportComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  selectedCategory: string = "Seleccione una categoría";
+  startDate : Date = new Date();
 
-  selectedMonth: string = "Seleccione un mes";
+  endDate : Date = new Date();
 
-  months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
 
-  categories: string[] = [];
+  selectedCategory: Category = {
+    nombre: "Seleccione una categoría",
+    report_id: 0
+  }
 
-  report : ProductCategoryReportLine[] = [];
+  categories: Category[] = [];
+
+  report: ProductCategoryReportLine[] = [];
 
   constructor(private reportsService: ReportsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.categories = this.reportsService.getCategories();
+    this.reportsService.getCategories().then(res => this.categories = res);
   }
 
   getReport() {
-    if (this.selectedCategory != "Seleccione una categoría") {
-      if (this.selectedMonth != "Seleccione un mes") {
-        this.report = this.reportsService.getCategoryReport(this.selectedMonth, this.selectedCategory, "Rowlette");
+    if (this.selectedCategory.nombre != "Seleccione una categoría") {
+      if (compareAsc(this.startDate, this.endDate) == -1 || compareAsc(this.startDate, this.endDate) == 0) {
+        this.reportsService.getCategoryReport(this.startDate, this.endDate, this.selectedCategory.report_id)
+        .then(res => this.report = res);
       }
-      else {
-        this.toastr.error("Seleccione un mes", "Error");
-      }
+      else{
+        this.toastr.error("La fecha de fin no puede ser menor a inicio")
+      }     
     }
     else {
       this.toastr.error("Seleccione una categoría", "Error");
     }
   }
 
-  selectMonth(value: string) {
-    this.selectedMonth = value;
-  }
-
-  selectCategory(value: string) {
+  selectCategory(value: Category) {
     this.selectedCategory = value;
   }
 }

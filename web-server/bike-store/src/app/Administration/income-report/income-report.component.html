@@ -1,22 +1,29 @@
-<article class="card-body">
+<article class="card-body" style="min-height: 475px;">
     <div class="row">
         <div class="col-lg-12">
             <form #form autocomplete="off">
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col-lg-6" style="text-align: center;">
-                            <div class="ng-autocomplete">
-                                <ng-autocomplete [data]="clientes" [searchKeyword]="keyword"
-                                    (selected)='selectEvent($event)' [itemTemplate]="itemTemplate"
-                                    [notFoundTemplate]="notFoundTemplate">
-                                </ng-autocomplete>
-                                <ng-template #itemTemplate let-item>
-                                    <a [innerHTML]="item.name"></a>
-                                </ng-template>
-                                <ng-template #notFoundTemplate let-notFound>
-                                    <div [innerHTML]="notFound"></div>
-                                </ng-template>
-                            </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <label>Seleccione un periodo: </label>
+                        </div>
+                        <div class="col-lg-1" style="text-align: center;">
+                            <label>Inicio: </label>
+                        </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="startDate"
+                                (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                                [enableTime]="false" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                [ngModelOptions]="{standalone: true}" />
+                        </div>
+                        <div class="col-lg-1" style="text-align: center;">
+                            <label>Fin: </label>
+                        </div>
+                        <div class="col-lg-2" style="text-align: center;">
+                            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="endDate"
+                                (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                                [enableTime]="false" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set"
+                                [ngModelOptions]="{standalone: true}" />
                         </div>
                         <div class="col-lg-1" style="text-align: center;">
                             Tienda:
@@ -32,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-1">
                             <button class="btn btn-primary btn-block" (click)="getReport()">Aceptar</button>
                         </div>
                     </div>
@@ -49,12 +56,13 @@
                     <table class="table table-hover bike-table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-12" style="text-align: center;">Monto de ventas</th>
+                                <th class="col-lg-12" style="text-align: center;">Monto de ventas</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="d-flex">
-
+                            <tr class="d-flex" *ngFor="let line of report">
+                                <td *ngIf="line.TotalRecaudado != null" class="col-lg-12">$ {{line.TotalRecaudado}}</td>
+                                <td *ngIf="line.TotalRecaudado == null" class="col-lg-12">No hay ventas para este periodo</td>
                             </tr>
                         </tbody>
                     </table>

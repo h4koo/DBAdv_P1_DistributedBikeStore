@@ -1,46 +1,55 @@
 <app-navigation></app-navigation>
-<div class="">
-    <div class="row d-flex justify-content-center">
-        <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
-            <div class="card">
-                <article class="card-body">
-                    <h4 class="card-title mb-4 mt-1">Reportes</h4>
-                    <hr>
-                    <div class="row">
-                        <!-- table -->
-                        <div class="col-md-12 table-responsive">
-                            <ngb-tabset [destroyOnHide]="false" [justify]="'fill'">
-                                <ngb-tab title="Dinero recaudado">
-                                    <ng-template ngbTabContent>
-                                        <app-income-report></app-income-report>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="Pedidos por cliente">
-                                    <ng-template ngbTabContent>
-                                        <app-orders-report></app-orders-report>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="Promedio de compras">
-                                    <ng-template ngbTabContent >
-                                        <app-purchases-report></app-purchases-report>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="Ventas por categoría">
-                                    <ng-template ngbTabContent>
-                                        <app-product-category-report></app-product-category-report>                                        
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="Ventas por tienda">
-                                    <ng-template ngbTabContent>
-                                        <app-sales-report></app-sales-report>
-                                    </ng-template>
-                                </ngb-tab>
-                            </ngb-tabset>
-                        </div>
+<div class=" d-flex justify-content-center">
+    <aside class="col-lg" style="margin: 5% 5% 5% 5%;">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Reportes</h4>
+                <hr>
+                <div class="row">
+                    <!-- table -->
+                    <div class="col-md-12 table-responsive">
+                        <ngb-tabset [destroyOnHide]="false" [justify]="'fill'">
+                            <ngb-tab title="Dinero recaudado">
+                                <ng-template ngbTabContent>
+                                    <app-income-report></app-income-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Pedidos por cliente">
+                                <ng-template ngbTabContent>
+                                    <app-orders-report></app-orders-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Promedio de compras">
+                                <ng-template ngbTabContent>
+                                    <app-purchases-report></app-purchases-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Ventas por categoría">
+                                <ng-template ngbTabContent>
+                                    <app-product-category-report></app-product-category-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Ventas por tienda">
+                                <ng-template ngbTabContent>
+                                    <app-sales-report></app-sales-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Ventas por producto">
+                                <ng-template ngbTabContent>
+                                    <app-store-product-sales-report></app-store-product-sales-report>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Top de clientes">
+                                <ng-template ngbTabContent>
+                                    <app-top-clients-report></app-top-clients-report>
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
                     </div>
-                </article>
-            </div> <!-- card.// -->
-        </aside> <!-- col.// -->
-    </div> <!-- row.// -->
-</div>
+                </div>
+            </article>
+        </div> <!-- card.// -->
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
 <!--container end.//-->

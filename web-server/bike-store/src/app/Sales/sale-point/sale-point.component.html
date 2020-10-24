@@ -18,19 +18,22 @@
                                                     <label>Agregar línea: </label>
                                                 </div>
                                                 <div class="col">
-                                                    <div ngbDropdown class="d-inline-block">
-                                                        <button class="btn btn-outline-primary" id="dropdownProduct"
-                                                            ngbDropdownToggle>{{selectedProduct.name}}</button>
-                                                        <div ngbDropdownMenu aria-labelledby="dropdownProduct">
-                                                            <button *ngFor="let product of products" ngbDropdownItem
-                                                                (click)="selectProduct(product)">{{product.name}}
-                                                            </button>
-                                                        </div>
+                                                    <div class="ng-autocomplete">
+                                                        <ng-autocomplete [data]="products" [searchKeyword]="keyword"
+                                                            (selected)='selectProduct($event)' [itemTemplate]="itemTemplate"
+                                                            [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un producto">
+                                                        </ng-autocomplete>
+                                                        <ng-template #itemTemplate let-item>
+                                                            <a [innerHTML]="item.name"></a>
+                                                        </ng-template>
+                                                        <ng-template #notFoundTemplate let-notFound>
+                                                            <div [innerHTML]="notFound"></div>
+                                                        </ng-template>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <input name="quantity" class="form-control" placeholder="Cantidad"
-                                                        [(ngModel)]="newLine.quantity" appOnlyNumbers required>
+                                                        [(ngModel)]="newLine.cant" appOnlyNumbers required>
                                                 </div>
                                                 <div class="col">
                                                     <button class="btn btn-primary btn-block"
@@ -84,16 +87,17 @@
                                             <h4>Vendedor</h4>
                                         </div>
                                         <div class="col">
-                                            <div ngbDropdown class="d-inline-block" style="width: 100%;">
-                                                <button class="btn btn-outline-primary" id="dropdownBasic3"
-                                                    ngbDropdownToggle>{{selectedEmployee.name}}
-                                                    {{selectedEmployee.lastname}}</button>
-                                                <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
-                                                    <button *ngFor="let employee of employees" ngbDropdownItem
-                                                        (click)="selectEmployee(employee)">{{employee.name}}
-                                                        {{employee.lastname}}
-                                                    </button>
-                                                </div>
+                                            <div class="ng-autocomplete">
+                                                <ng-autocomplete [data]="employees" [searchKeyword]="keyword"
+                                                    (selected)='selectEmployee($event)' [itemTemplate]="itemTemplate"
+                                                    [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un empleado">
+                                                </ng-autocomplete>
+                                                <ng-template #itemTemplate let-item>
+                                                    <a [innerHTML]="item.name"></a>
+                                                </ng-template>
+                                                <ng-template #notFoundTemplate let-notFound>
+                                                    <div [innerHTML]="notFound"></div>
+                                                </ng-template>
                                             </div>
                                         </div>
                                     </div>
@@ -104,35 +108,18 @@
                             <div class="card">
                                 <article class="card-body">
                                     <h4 class="card-title mb-4 mt-1">Información del cliente</h4>
-                                    <div ngbDropdown class="d-inline-block" style="width: 100%;">
-                                        <button class="btn btn-outline-primary" id="dropdownBasic1"
-                                            ngbDropdownToggle>{{selectedClient.name}}
-                                            {{selectedClient.lastname}}</button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                            <button *ngFor="let client of clients" ngbDropdownItem
-                                                (click)="selectClient(client)">{{client.name}} {{client.lastname}}
-                                            </button>
-                                        </div>
+                                    <div class="ng-autocomplete">
+                                        <ng-autocomplete [data]="clients" [searchKeyword]="keyword"
+                                            (selected)='selectClient($event)' [itemTemplate]="itemTemplate"
+                                            [notFoundTemplate]="notFoundTemplate" placeHolder="Seleccione un cliente">
+                                        </ng-autocomplete>
+                                        <ng-template #itemTemplate let-item>
+                                            <a [innerHTML]="item.name"></a>
+                                        </ng-template>
+                                        <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                        </ng-template>
                                     </div>
-                                    <table class="table table-borderless"
-                                        *ngIf="selectedClient.name != 'Seleccione un cliente'">
-                                        <tr>
-                                            <td style="font-weight: bold;">Cédula: </td>
-                                            <td>{{selectedClient.id}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Nombre: </td>
-                                            <td>{{selectedClient.name}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Apellidos: </td>
-                                            <td>{{selectedClient.lastname}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="font-weight: bold;">Teléfono: </td>
-                                            <td>{{selectedClient.phone}}</td>
-                                        </tr>
-                                    </table>
                                 </article>
                             </div> <!-- card.// -->
                             <br />

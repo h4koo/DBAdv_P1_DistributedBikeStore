@@ -4,23 +4,22 @@
             <form #form autocomplete="off">
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col-lg-1" style="text-align: center;">
-                            <label>Periodo: </label>
+                        <div class="col-lg-6" style="text-align: center;">
+                            <div class="ng-autocomplete">
+                                <ng-autocomplete [data]="clientes" [searchKeyword]="keyword"
+                                    (selected)='selectEvent($event)' [itemTemplate]="itemTemplate"
+                                    [notFoundTemplate]="notFoundTemplate">
+                                </ng-autocomplete>
+                                <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.name"></a>
+                                </ng-template>
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+                            </div>
                         </div>
                         <div class="col-lg-1" style="text-align: center;">
-                            <label>Inicio: </label>
-                        </div>
-                        <div class="col-lg-2" style="text-align: center;">
-                          
-                        </div>
-                        <div class="col-lg-1" style="text-align: center;">
-                            <label>Fin: </label>
-                        </div>
-                        <div class="col-lg-2" style="text-align: center;">
-                            
-                        </div>
-                        <div class="col-lg-1" style="text-align: center;">
-                            Tienda: 
+                            Tienda:
                         </div>
                         <div class="col-lg-2" style="text-align: center;">
                             <div ngbDropdown class="d-inline-block" style="width: 100%;">
@@ -41,7 +40,7 @@
             </form>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
@@ -55,7 +54,7 @@
                         </thead>
                         <tbody>
                             <tr class="d-flex">
-                                
+
                             </tr>
                         </tbody>
                     </table>

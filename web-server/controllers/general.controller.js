@@ -17,7 +17,6 @@ exports.getClients = (req, res) => {
 
 };
 
-
 // Retrieve all employees from the database
 exports.getEmployees = (req, res) => {
     SimplePerson.getEmployees((err, data) => {

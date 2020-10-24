@@ -19,21 +19,18 @@ export class SalePointComponent implements OnInit {
 
   selectedClient: Client = {
     name: "Seleccione un cliente",
-    lastname: "",
-    phone: 0,
-    id: 0
+    person_id: 0
   }
 
   selectedEmployee: Employee = {
     name: "Seleccione un empleado",
-    lastname: "",
-    id: 0
+    person_id: 0
   }
 
   selectedProduct: Product = {
     name: "Seleccione un producto",
-    id: 0,
-    price: 0
+    prod_id: 0,
+    precio: 0
   }
 
   newOrder: Order = {
@@ -44,8 +41,8 @@ export class SalePointComponent implements OnInit {
   };
 
   newLine: OrderLine = {
-    product_id: 0,
-    quantity: 0
+    prod_id: 0,
+    cant: 0
   }
 
   tableLines: TableLine[] = [];
@@ -65,46 +62,57 @@ export class SalePointComponent implements OnInit {
   constructor(private toastr: ToastrService, private salesService: SalesService) { }
 
   ngOnInit(): void {
-    this.clients = this.salesService.getClients();
-    this.products = this.salesService.getProducts();
-    this.employees = this.salesService.getEmployees();
+    this.salesService.getClients().then(res => this.clients = res);
+    this.salesService.getProducts().then(res => this.products = res);
+    this.salesService.getEmployees().then(res => this.employees = res);
   }
 
-  selectClient(value: Client) {
+  keyword = "name"
+
+  /*selectClient(value: Client) {
     this.selectedClient = value;
     this.newOrder.client_id = value.id;
+  }*/
+  selectClient(item) {
+    this.newOrder.client_id = item.id;
+    this.selectedClient = item;
+    console.log(this.selectedClient.name);
+    console.log(this.selectedEmployee.name);
   }
 
-  selectProduct(value: Product) {
-    this.selectedProduct = value;
+
+  selectProduct(item) {
+    this.selectedProduct = item;
   }
 
-  selectEmployee(value: Employee) {
-    this.selectedEmployee = value;
-    this.newOrder.emp_id = value.id;
+  selectEmployee(item) {
+    this.selectedEmployee = item;
+    this.newOrder.emp_id = item.person_id;
+    console.log(this.selectedClient.name);
+    console.log(this.selectedEmployee.name);
   }
 
   addProduct() {
     if (this.selectedProduct.name != "Seleccione un producto") {
-      if (this.newLine.quantity != 0) {
-        this.newLine.product_id = this.selectedProduct.id;
+      if (this.newLine.cant != 0) {
+        this.newLine.prod_id = this.selectedProduct.prod_id;
         this.orderLines.push(this.newLine);
         var line = {
-          id: this.selectedProduct.id,
+          id: this.selectedProduct.prod_id,
           name: this.selectedProduct.name,
-          quantity: this.newLine.quantity,
-          price: this.selectedProduct.price
+          quantity: this.newLine.cant,
+          price: this.selectedProduct.precio
         }
         this.tableLines.push(line);
-        this.total = this.total + (this.selectedProduct.price * this.newLine.quantity);
+        this.total = this.total + (this.selectedProduct.precio * this.newLine.cant);
         this.newLine = {
-          product_id: 0,
-          quantity: 0
+          prod_id: 0,
+          cant: 0
         }
         this.selectedProduct = {
           name: "Seleccione un producto",
-          id: 0,
-          price: 0
+          prod_id: 0,
+          precio: 0
         }
       }
       else {
@@ -122,7 +130,7 @@ export class SalePointComponent implements OnInit {
         this.total = this.total - (product.quantity * product.price);
       }
     });
-    this.orderLines = this.orderLines.filter(line => line.product_id != product.id);
+    this.orderLines = this.orderLines.filter(line => line.prod_id != product.id);
     this.tableLines = this.tableLines.filter(line => line.id != product.id);
   }
 

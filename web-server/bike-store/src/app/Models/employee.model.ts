@@ -1,5 +1,4 @@
 export class Employee {
-    id: number;
+    person_id: number;
     name : string;
-    lastname : string;
 }

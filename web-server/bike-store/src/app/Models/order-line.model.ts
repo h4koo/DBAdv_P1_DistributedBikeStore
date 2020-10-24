@@ -1,4 +1,4 @@
 export class OrderLine {
-    product_id : number;
-    quantity : number;
+    prod_id : number;
+    cant : number;
 }

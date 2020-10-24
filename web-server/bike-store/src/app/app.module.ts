@@ -22,6 +22,7 @@ import { Spanish } from 'flatpickr/dist/l10n/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { IncomeReportComponent } from './Administration/income-report/income-report.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { IncomeReportComponent } from './Administration/income-report/income-rep
     ToastrModule.forRoot(), // ToastrModule added
     FlatpickrModule.forRoot({ locale: Spanish }),
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AutocompleteLibModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

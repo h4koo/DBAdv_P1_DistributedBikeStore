@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Client } from '../Models/client.model';
 import { IncomeReportLine } from '../Models/income-report-line.model';
 import { OrderReportLine } from '../Models/order-report-line.model';
 import { ProductCategoryReportLine } from '../Models/product-category-report-line.model';
 import { PurhaseReportLine } from '../Models/purhase-report-line.model';
+import { Report } from '../Models/report.model';
 import { SalesReportLine } from '../Models/sales-report-line.model';
 
 @Injectable({
@@ -67,5 +69,16 @@ export class ReportsService {
 
   getStores() {
     return this.stores;
+  }
+
+  reportes: Client[] = []
+  async getReportList() {
+    await this.http.get('http://localhost:3000/api/clients').toPromise().then(res => {
+      this.reportes = res as Client[];
+    }, error => {
+      this.toastr.error('No se pudieron cargar los reportes', 'Error!');
+      console.log(error);
+    });
+    return this.reportes;
   }
 }

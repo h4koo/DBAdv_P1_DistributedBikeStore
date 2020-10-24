@@ -127,9 +127,9 @@ body {
 .nav-tabs .nav-item.show .nav-link {
     background-color: scale-color($Bikes-4-hex, $lightness: -5%);
 
-    color           : $Bikes-3-hex;
-    font-size       : 15px;
-    font-weight     : bold;
+    color      : $Bikes-3-hex;
+    font-size  : 15px;
+    font-weight: bold;
 }
 
 /* this is for normal tabs */
@@ -142,6 +142,14 @@ body {
     padding         : 5px 25px;
 }
 
-.tab-content .active{
-    min-height: 450px; 
+.tab-content .active {
+    min-height: 450px;
+}
+
+.ng-autocomplete {
+    width    : 100%;
+    max-width: 300px;
+    display  : table;
+    margin   : 0 auto;
+
 }

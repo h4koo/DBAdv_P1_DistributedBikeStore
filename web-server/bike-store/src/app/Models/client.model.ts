@@ -1,6 +1,4 @@
 export class Client {
-    id: number;
+    person_id: number;
     name : string;
-    lastname : string;
-    phone : number;
 }

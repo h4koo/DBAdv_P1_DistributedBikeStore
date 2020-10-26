@@ -13,23 +13,6 @@ import { formatISO } from 'date-fns';
 })
 export class SalesService {
 
-  /*clients: Client[] = [
-    { id: 1234, name: "Cliente 1", lastname: "Cliente 1", phone: 12345678 },
-    { id: 1235, name: "Cliente 2", lastname: "Cliente 2", phone: 12345678 }
-  ];
-
-  employees: Employee[] = [
-    { id: 1, name: "Empleado 1", lastname: "Empleado 1" },
-    { id: 2, name: "Empleado 2", lastname: "Empleado 2" }
-  ];
-    products: Product[] = [
-    { prod_id: 1, nombre: "Producto 1", precio: 1000 },
-    { prod_id: 2, nombre: "Producto 2", precio: 1200 },
-    { prod_id: 3, nombre: "Producto 3", precio: 800 },
-    { prod_id: 4, nombre: "Producto 4", precio: 1100 }
-  ];
-  */
-
   clients: Client[] = [];
 
   employees: Employee[] = [];
@@ -38,29 +21,11 @@ export class SalesService {
 
   constructor(public http: HttpClient, private toastr: ToastrService) { }
 
-  /*getClients() {
-    return this.clients;
-  }
-  
-  
-  getEmployees() {
-    return this.employees;
-  }
-  
-
-  getProducts() {
-    return this.products;
-  }
-
-  processOrder(order: Order) {
-    console.log(order.required_date);
-    this.toastr.success("Orden procesada correctamente", 'Éxito!');
-  }*/
-
   //Métodos asincrónicos para conectar al API
 
   async getClients() {
     await this.http.get(environment.API + '/clients').toPromise().then(res => {
+     
       this.clients = res as Client[];
     }, error => {
       this.toastr.error('No se pudieron cargar los clientes', 'Error!');

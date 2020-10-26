@@ -8,25 +8,39 @@ const Product = function (name, price) {
 };
 
 Product.getProducts = result => {
-    sql.query("SELECT idProducto AS prod_id, nomProducto AS name, precioVenta AS precio FROM produccion.productos;", (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-        result(null, res);
-    });
+    try {
+        sql.query("SELECT idProducto AS prod_id, nomProducto AS name, precioVenta AS precio FROM produccion.productos;", (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
+            result(null, res);
+        });
+    }
+    catch {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+    }
 };
 
 Product.getCategories = result => {
-    sql.query("SELECT idCategoria AS report_id, descripcion AS nombre FROM produccion.categorias;", (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-        result(null, res);
-    });
+    try {
+        sql.query("SELECT idCategoria AS report_id, descripcion AS nombre FROM produccion.categorias;", (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
+            result(null, res);
+        });
+    }
+    catch {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+    }
 };
 
 module.exports = Product;

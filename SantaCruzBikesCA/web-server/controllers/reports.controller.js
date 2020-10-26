@@ -17,7 +17,7 @@ exports.getReportResult = (req, res) => {
     let startDate = req.body.init_date;
     let endDate = req.body.end_date;
 
-    console.log('reportid: ' + reportId + '  idCliente: ' + idCliente + '  categoaria: ' + prodCategory + '  startdate: ' + startDate + ' enddate: ' + endDate)
+    console.log('reportid: ' + reportId + '  idCliente: ' + idCliente + '  categoria: ' + prodCategory + '  startdate: ' + startDate + ' enddate: ' + endDate)
     ReportRequest.submitReport(reportId, idTienda, idCliente, prodCategory, startDate, endDate, 3, (err, data) => {
         if (err)
             res.status(500).send({

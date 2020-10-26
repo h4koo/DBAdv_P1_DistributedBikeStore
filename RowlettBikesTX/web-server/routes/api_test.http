@@ -1,0 +1,50 @@
+
+GET http://localhost:3000/api/clients HTTP/1.1
+
+
+###
+
+GET http://localhost:3000/api/employees HTTP/1.1
+
+
+###
+
+GET http://localhost:3000/api/products HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/productcategories HTTP/1.1
+
+
+###
+
+GET http://localhost:3000/api/reports HTTP/1.1
+
+
+
+
+###
+
+
+PUT  http://localhost:3000/api/reports/6 HTTP/1.1
+content-type: application/json
+
+{    
+    "client_id": "1",
+    "prod_category": "1",
+    "init_date": "2018-01-30",
+    "end_date":  "2020-11-30"
+}
+
+
+###
+
+POST http://localhost:3000/api/sale HTTP/1.1
+content-type: application/json
+
+{    
+    "client_id": "2",
+    "emp_id": "2",
+    "req_date": "2020-10-30",
+    "items":  [ {"prod_id": "3", "cant": "1" }, {"prod_id": "4", "cant": "2" }]
+}

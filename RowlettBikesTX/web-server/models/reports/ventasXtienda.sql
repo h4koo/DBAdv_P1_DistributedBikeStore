@@ -1,0 +1,1 @@
+SELECT tnd.nomTienda, tnd.estado, sum(detord.precioVenta) as Ventas FROM ventas.tiendas tnd JOIN ventas.ordenes ord ON tnd.idTienda = ord.idTienda JOIN ventas.detalleOrden detord ON ord.idOrden = detord.idOrden WHERE ord.fechaOrden >= ? AND ord.fechaOrden < ? GROUP BY tnd.idTienda; , [fecha_inicial, fecha_final]

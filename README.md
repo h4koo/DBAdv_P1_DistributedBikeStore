@@ -32,6 +32,14 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## MySQL Cluster Configuration
+
+To setup a multi-node MySQL Cluster from scratch on Ubuntu 18.04 please follow this guide: [Setup MySQL Cluster](https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04).
+
+The MySQL Cluster Configuration folder contains all the configurations settings needed for each type of Nodes.
+
+For more information about how MySQL Cluster works please visit the [official documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html).
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -53,3 +53,25 @@ $ cd web-server
 
 $ npm install
 
+De igual manera dirigirse a la carpeta bike-store dentro de la carpeta web-server y utlizar:
+
+$ cd bike-store
+
+$ npm install
+
+## Instrucciones y pasos a seguir
+
+Unas vez instalado las dependencias, se puede empezar a correr la aplicación.
+
+Para empezar a correr la aplicación hay que ingresar a la carpeta web-server y correr la siguiente instrucción:
+
+$ node server.js
+
+
+Dependiendo de la máquina virtual en el cual se esta corriendo, las direcciones de dominio variaran:
+
+-Máquina virtual en Nueva York: http://newyorknode2020.eastus.cloudapp.azure.com:3000/
+
+-Máquina virtual en California: http://calinode2020.westus.cloudapp.azure.com:3000/
+
+-Máquina virtual en Texas: http://texasnode2020.southcentralus.cloudapp.azure.com:3000/
